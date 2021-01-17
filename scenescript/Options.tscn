@@ -1,0 +1,108 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://ui/main_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://buttons/qbutton5.png" type="Texture" id=2]
+[ext_resource path="res://buttons/o_digital.png" type="Texture" id=3]
+[ext_resource path="res://buttons/o_analog.png" type="Texture" id=4]
+[ext_resource path="res://buttons/qbutton.png" type="Texture" id=5]
+[ext_resource path="res://buttons/o_analog2.png" type="Texture" id=6]
+[ext_resource path="res://buttons/o_digital2.png" type="Texture" id=7]
+[ext_resource path="res://addons/kenney_ui_audio/click1.wav" type="AudioStream" id=9]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+var analog
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+func _on_OButtonNO_pressed():
+	$BPress.play()
+	self.visible = false
+
+func _on_Digital_pressed():
+	analog = false
+
+func _on_Analog_pressed():
+	analog = true
+"
+
+[node name="Options" type="Control"]
+pause_mode = 2
+margin_right = 705.0
+margin_bottom = 1080.0
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.54902 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Analog" type="TextureButton" parent="."]
+margin_left = 125.0
+margin_top = 320.0
+margin_right = 253.0
+margin_bottom = 448.0
+toggle_mode = true
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Digital" type="TextureButton" parent="."]
+margin_left = 450.0
+margin_top = 320.0
+margin_right = 578.0
+margin_bottom = 448.0
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OButtonNO" type="TextureButton" parent="."]
+margin_left = 64.0
+margin_top = 900.0
+margin_right = 192.0
+margin_bottom = 1028.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.133
+anchor_right = 0.5
+anchor_bottom = 0.133
+margin_left = -176.0
+margin_top = -63.64
+margin_right = 176.0
+margin_bottom = -15.64
+custom_fonts/font = ExtResource( 1 )
+text = "Options"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BPress" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 9 )
+[connection signal="pressed" from="Analog" to="." method="_on_Analog_pressed"]
+[connection signal="pressed" from="Digital" to="." method="_on_Digital_pressed"]
+[connection signal="pressed" from="OButtonNO" to="." method="_on_OButtonNO_pressed"]

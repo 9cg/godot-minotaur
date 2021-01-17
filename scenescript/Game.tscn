@@ -1,0 +1,219 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://ui/main_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenescript/Game.gd" type="Script" id=2]
+[ext_resource path="res://buttons/sbutton2.png" type="Texture" id=3]
+[ext_resource path="res://buttons/cbutton.png" type="Texture" id=4]
+[ext_resource path="res://addons/kenney_ui_audio/click1.wav" type="AudioStream" id=5]
+[ext_resource path="res://buttons/sbutton.png" type="Texture" id=6]
+[ext_resource path="res://buttons/cbutton2.png" type="Texture" id=7]
+[ext_resource path="res://buttons/hbutton2.png" type="Texture" id=8]
+[ext_resource path="res://buttons/mbutton2.png" type="Texture" id=9]
+[ext_resource path="res://minotaur_w.png" type="Texture" id=10]
+[ext_resource path="res://buttons/pbutton.png" type="Texture" id=11]
+[ext_resource path="res://buttons/mbutton.png" type="Texture" id=12]
+[ext_resource path="res://buttons/pbutton2.png" type="Texture" id=13]
+[ext_resource path="res://ui/Background.png" type="Texture" id=14]
+[ext_resource path="res://scenescript/Joystick.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenescript/Player.gd" type="Script" id=16]
+[ext_resource path="res://scenescript/Options.tscn" type="PackedScene" id=17]
+[ext_resource path="res://buttons/hbutton.png" type="Texture" id=18]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 58.2155, 136.849 )
+
+[sub_resource type="Animation" id=2]
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "switch"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Anim/Switch:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2340, 1080 ), Vector2( 2340, 0 ) ]
+}
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 1170.5, 429.774 )
+scale = Vector2( 6.08767, 6.08767 )
+texture = ExtResource( 14 )
+
+[node name="Score" type="Label" parent="."]
+margin_left = 1165.34
+margin_top = 113.216
+margin_right = 1221.34
+margin_bottom = 257.216
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="Node2D"]
+position = Vector2( 500, 200 )
+script = ExtResource( 16 )
+
+[node name="Hitbox" type="CollisionShape2D" parent="Node2D/KinematicBody2D"]
+position = Vector2( 485.469, 650.676 )
+scale = Vector2( 2.00358, 0.861069 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/KinematicBody2D"]
+anims/walk = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Node2D/KinematicBody2D"]
+position = Vector2( 484.946, 650.282 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 10 )
+hframes = 8
+frame = 7
+region_enabled = true
+region_rect = Rect2( 0, 0, 516, 64 )
+
+[node name="Joystick" parent="." instance=ExtResource( 15 )]
+anchor_top = 15.0
+anchor_bottom = 15.0
+margin_left = 2.0
+margin_top = 232.0
+margin_right = 2339.0
+margin_bottom = 1087.0
+rect_pivot_offset = Vector2( 386.5, 306.998 )
+joystick_mode = 1
+directions = 2
+simmetry_angle = 0
+
+[node name="PButton" type="TextureButton" parent="."]
+margin_left = 2056.75
+margin_top = 40.0
+margin_right = 2248.75
+margin_bottom = 232.0
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HButton" type="TouchScreenButton" parent="."]
+position = Vector2( 128, 836 )
+scale = Vector2( 7.11111, 7.11111 )
+normal = ExtResource( 18 )
+pressed = ExtResource( 8 )
+
+[node name="PMenu" type="Control" parent="."]
+pause_mode = 2
+visible = false
+margin_right = 705.0
+margin_bottom = 1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="PMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.54902 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Paused" type="Label" parent="PMenu"]
+anchor_left = 0.5
+anchor_top = 0.444
+anchor_right = 0.5
+anchor_bottom = 0.444
+margin_left = -163.5
+margin_top = -63.5201
+margin_right = 164.5
+margin_bottom = 64.4799
+custom_fonts/font = ExtResource( 1 )
+text = "Paused"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CButton" type="TextureButton" parent="PMenu"]
+margin_left = 122.315
+margin_top = 551.35
+margin_right = 250.315
+margin_bottom = 679.35
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SButton" type="TextureButton" parent="PMenu"]
+margin_left = 288.315
+margin_top = 551.35
+margin_right = 416.315
+margin_bottom = 679.35
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MButton" type="TextureButton" parent="PMenu"]
+margin_left = 454.315
+margin_top = 551.35
+margin_right = 582.315
+margin_bottom = 679.35
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BPress" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 5 )
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+anims/switch = SubResource( 3 )
+
+[node name="Switch" type="ColorRect" parent="Anim"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -1080.0
+color = Color( 0.305882, 0.305882, 0.305882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" parent="." instance=ExtResource( 17 )]
+visible = false
+[connection signal="pressed" from="PButton" to="." method="_on_PButton_pressed"]
+[connection signal="pressed" from="HButton" to="." method="_on_HButton_pressed"]
+[connection signal="pressed" from="PMenu/CButton" to="." method="_on_CButton_pressed"]
+[connection signal="pressed" from="PMenu/SButton" to="." method="_on_SButton_pressed"]
+[connection signal="pressed" from="PMenu/MButton" to="." method="_on_MButton_pressed"]

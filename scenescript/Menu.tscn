@@ -1,0 +1,337 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://ui/main_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://buttons/sbutton2.png" type="Texture" id=2]
+[ext_resource path="res://buttons/qbutton2.png" type="Texture" id=3]
+[ext_resource path="res://buttons/qbutton.png" type="Texture" id=4]
+[ext_resource path="res://scenescript/Menu.gd" type="Script" id=5]
+[ext_resource path="res://buttons/cbutton.png" type="Texture" id=6]
+[ext_resource path="res://buttons/qbutton3.png" type="Texture" id=7]
+[ext_resource path="res://buttons/qbutton5.png" type="Texture" id=8]
+[ext_resource path="res://ui/MBackground.png" type="Texture" id=9]
+[ext_resource path="res://buttons/qbutton4.png" type="Texture" id=10]
+[ext_resource path="res://addons/kenney_ui_audio/click1.wav" type="AudioStream" id=11]
+[ext_resource path="res://buttons/sbutton.png" type="Texture" id=12]
+[ext_resource path="res://buttons/cbutton2.png" type="Texture" id=13]
+[ext_resource path="res://buttons/obutton.png" type="Texture" id=14]
+[ext_resource path="res://buttons/obutton2.png" type="Texture" id=15]
+[ext_resource path="res://flags/unitedkingdom.png" type="Texture" id=16]
+[ext_resource path="res://flags/germany.png" type="Texture" id=17]
+[ext_resource path="res://flags/turkey.png" type="Texture" id=18]
+[ext_resource path="res://flags/azerbaijan.png" type="Texture" id=19]
+[ext_resource path="res://flags/default.png" type="Texture" id=20]
+[ext_resource path="res://scenescript/Options.tscn" type="PackedScene" id=21]
+[ext_resource path="res://flags/default2.png" type="Texture" id=22]
+
+[sub_resource type="Animation" id=1]
+resource_name = "tt1"
+length = 16.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("TitleAnim/Title:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 6, 10, 14 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -1.0, 1.0, -1.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TitleAnim/Title:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 4, 6, 8, 10, 12, 14, 16 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 940, 350 ), Vector2( 940, 340 ), Vector2( 940, 350 ), Vector2( 940, 340 ), Vector2( 940, 350 ), Vector2( 940, 340 ), Vector2( 940, 350 ), Vector2( 940, 340 ), Vector2( 940, 350 ) ]
+}
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuB" type="Sprite" parent="."]
+position = Vector2( 1162.79, 425 )
+scale = Vector2( 6.05556, 6.05556 )
+texture = ExtResource( 9 )
+
+[node name="TitleAnim" type="AnimationPlayer" parent="."]
+anims/tt1 = SubResource( 1 )
+
+[node name="Title" type="Label" parent="TitleAnim"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -208.0
+margin_top = -129.5
+margin_right = 208.0
+margin_bottom = 129.5
+rect_rotation = 0.7
+rect_pivot_offset = Vector2( 232, 145.5 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Hungry
+Minotaur"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -264.0
+margin_top = -378.0
+margin_right = -136.0
+margin_bottom = -250.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SButton" type="TextureButton" parent="."]
+margin_left = 1106.0
+margin_top = 702.0
+margin_right = 1234.0
+margin_bottom = 830.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QButton" type="TextureButton" parent="."]
+margin_left = 1306.0
+margin_top = 702.0
+margin_right = 1434.0
+margin_bottom = 830.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OButton" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -168.0
+margin_top = 40.0
+margin_right = -40.0
+margin_bottom = 168.0
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TButton" type="TextureButton" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2012.0
+margin_top = -1025.0
+margin_right = -200.0
+margin_bottom = -929.0
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 22 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BPress" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="Confirm" type="Control" parent="."]
+pause_mode = 2
+visible = false
+margin_right = 705.0
+margin_bottom = 1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Confirm"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.54902 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="Label" parent="Confirm"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -122.5
+margin_top = 398.0
+margin_right = 149.5
+margin_bottom = 526.0
+custom_fonts/font = ExtResource( 1 )
+text = "Quit?"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QButtonNO" type="TextureButton" parent="Confirm"]
+margin_left = 125.0
+margin_top = 550.0
+margin_right = 253.0
+margin_bottom = 678.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QButtonYES" type="TextureButton" parent="Confirm"]
+margin_left = 450.0
+margin_top = 550.0
+margin_right = 578.0
+margin_bottom = 678.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" parent="." instance=ExtResource( 21 )]
+visible = false
+
+[node name="Language" type="Control" parent="."]
+pause_mode = 2
+visible = false
+margin_right = 705.0
+margin_bottom = 1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Language"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.54902 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Language" type="Label" parent="Language"]
+anchor_left = 0.5
+anchor_top = 0.263
+anchor_right = 0.5
+anchor_bottom = 0.263
+margin_left = -224.0
+margin_top = -64.04
+margin_right = 224.0
+margin_bottom = -156.04
+custom_fonts/font = ExtResource( 1 )
+text = "Language"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TButtonNO" type="TextureButton" parent="Language"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 64.0
+margin_top = -180.0
+margin_right = 192.0
+margin_bottom = -52.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UK" type="TextureButton" parent="Language"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 65.0
+margin_top = -158.0
+margin_right = 193.0
+margin_bottom = -62.0
+texture_normal = ExtResource( 16 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DE" type="TextureButton" parent="Language"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 215.0
+margin_top = -158.0
+margin_right = 343.0
+margin_bottom = -62.0
+texture_normal = ExtResource( 17 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TR" type="TextureButton" parent="Language"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 365.0
+margin_top = -158.0
+margin_right = 493.0
+margin_bottom = -62.0
+texture_normal = ExtResource( 18 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AZ" type="TextureButton" parent="Language"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 515.0
+margin_top = -158.0
+margin_right = 643.0
+margin_bottom = -62.0
+texture_normal = ExtResource( 19 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="CButton" to="." method="_on_CButton_pressed"]
+[connection signal="pressed" from="SButton" to="." method="_on_SButton_pressed"]
+[connection signal="pressed" from="QButton" to="." method="_on_QButton_pressed"]
+[connection signal="pressed" from="OButton" to="." method="_on_OButton_pressed"]
+[connection signal="pressed" from="TButton" to="." method="_on_TButton_pressed"]
+[connection signal="pressed" from="Confirm/QButtonNO" to="." method="_on_QButtonNO_pressed"]
+[connection signal="pressed" from="Confirm/QButtonYES" to="." method="_on_QButtonYES_pressed"]
+[connection signal="pressed" from="Language/TButtonNO" to="." method="_on_TButtonNO_pressed"]
+[connection signal="pressed" from="Language/UK" to="." method="_on_UK_pressed"]
+[connection signal="pressed" from="Language/DE" to="." method="_on_DE_pressed"]
+[connection signal="pressed" from="Language/TR" to="." method="_on_TR_pressed"]
+[connection signal="pressed" from="Language/AZ" to="." method="_on_AZ_pressed"]
